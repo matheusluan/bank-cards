@@ -1,6 +1,5 @@
 import { CardBrand } from "./card-brand";
 
-
 export type BankCardType = {
     brand: CardBrand;
     name: string;

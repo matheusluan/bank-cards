@@ -13,7 +13,7 @@ export default function Button({
     return (
         <button
             className={cn(
-                "w-full h-12 flex items-center justify-center gap-2 rounded-lg bg-primary text-white font-bold hover:bg-primary-dark transition",
+                "w-full h-14 flex min-w-15 items-center justify-center gap-2 rounded-lg bg-primary disabled:bg-gray  text-white  font-bold hover:bg-primary-dark transition cursor-pointer",
                 className
             )}
             {...props}

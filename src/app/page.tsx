@@ -1,6 +1,7 @@
 import BankCard from "@/components/bank-card";
-import Button from "@/components/button";
 import { CardBrand } from "@/types/card-brand";
+import AddCardModal from "@/components/modals/add-card-modal";
+import BankCardList from "@/components/bank-card-list";
 
 export default function Home() {
   return (
@@ -13,40 +14,9 @@ export default function Home() {
       </h2>
 
       {/* Card list */}
-      <section className="my-12 grid md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-5">
-        <BankCard card={{
-          brand: CardBrand.MASTERCARD,
-          name: "John Doe",
-          number: "4111111111111111",
-          cvc: "123",
-          expires: "12/26",
-        }} />
-        <BankCard card={{
-          brand: CardBrand.VISA,
-          name: "John Doe",
-          number: "4111111111111111",
-          cvc: "123",
-          expires: "12/26",
-        }} />
-        <BankCard card={{
-          brand: CardBrand.MASTERCARD,
-          name: "John Doe",
-          number: "1516511111156622",
-          cvc: "123",
-          expires: "12/26",
-        }} />
-        <BankCard card={{
-          brand: CardBrand.VISA,
-          name: "John Doe",
-          number: "1514404141414141",
-          cvc: "123",
-          expires: "12/26",
-        }} />
-      </section>
+      <BankCardList />
 
-      <Button className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[80%] lg:max-w-120 z-20">
-        Add new card
-      </Button>
+      <AddCardModal />
 
     </main>
   );

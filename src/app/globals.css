@@ -11,6 +11,7 @@
   /* Base */
   --color-background: #e5e5e5;
   --color-foreground: #171717;
+  --font-family-sans: var(--font-circular);
 
   /* Primary (purple) */
   --color-primary: #4C00C2;

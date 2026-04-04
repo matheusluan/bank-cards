@@ -38,7 +38,7 @@ export default function RootLayout({
       lang="en"
       className={`${circular.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body>
         {children}
       </body>
     </html>
