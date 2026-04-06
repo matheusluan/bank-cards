@@ -1,9 +1,10 @@
 import { CardBrand } from "./card-brand";
 
 export type BankCardType = {
-    brand: CardBrand;
+    id: string;
     name: string;
-    number: string;
     cvc: string;
+    number: string;
     expires: string;
+    brand: CardBrand;
 };

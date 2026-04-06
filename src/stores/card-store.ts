@@ -6,7 +6,8 @@ import { getCardBrand } from "@/utils/functions";
 interface CardStore {
     cards: BankCardType[];
     addCard: (card: Omit<BankCardType, "brand">) => void;
-    removeCard: (number: string) => void;
+    editCard: (card: Omit<BankCardType, "brand">) => void;
+    removeCard: (id: string) => void;
 }
 
 export const useCardStore = create<CardStore>()(
@@ -23,9 +24,17 @@ export const useCardStore = create<CardStore>()(
                         },
                     ],
                 })),
-            removeCard: (number) =>
+            editCard: (card) =>
                 set((state) => ({
-                    cards: state.cards.filter((c) => c.number !== number),
+                    cards: state.cards.map((c) =>
+                        c.id === card.id
+                            ? { ...card, brand: getCardBrand(card.number) }
+                            : c
+                    ),
+                })),
+            removeCard: (id) =>
+                set((state) => ({
+                    cards: state.cards.filter((c) => c.id !== id),
                 })),
         }),
         {

@@ -1,7 +1,5 @@
-import BankCard from "@/components/bank-card";
-import { CardBrand } from "@/types/card-brand";
-import AddCardModal from "@/components/modals/add-card-modal";
 import BankCardList from "@/components/bank-card-list";
+import AddCardModal from "@/components/add-card-modal";
 
 export default function Home() {
   return (

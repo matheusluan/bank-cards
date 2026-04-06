@@ -8,9 +8,10 @@ import Image from "next/image";
 
 type BankCardProps = {
     card: BankCardType;
+    onEdit?: (card: BankCardType) => void;
 } & HTMLAttributes<HTMLDivElement>;
 
-export default function BankCard({ card, className, ...props }: BankCardProps) {
+export default function BankCard({ card, className, onEdit, ...props }: BankCardProps) {
     const { brand, name, number, cvc, expires } = card;
     const formattedNumber = number.replace(/(.{4})/g, "$1 ").trim();
 
@@ -18,7 +19,7 @@ export default function BankCard({ card, className, ...props }: BankCardProps) {
         <>
             <div
                 {...props}
-                className={`relative w-full min-w-80 h-44 rounded-sm text-white overflow-hidden cursor-pointer ${brand === CardBrand.VISA ? "bg-card-ciano" : "bg-primary-alt"}`}
+                className={`relative w-full min-w-70 h-44 rounded-sm text-white overflow-hidden  ${brand === CardBrand.VISA ? "bg-card-ciano" : "bg-primary-alt"} ${className}`}
             >
                 {/* Shape*/}
                 <div
@@ -62,7 +63,7 @@ export default function BankCard({ card, className, ...props }: BankCardProps) {
                             <p className="text-sm tracking-widest">{formattedNumber}</p>
                         </div>
 
-                        <Image src="/icons/edit-icon.svg" width={18} height={18} alt="Edit Icon" />
+                        {onEdit ? <Image src="/icons/edit-icon.svg" width={18} height={18} alt="Edit Icon" onClick={() => onEdit?.(card)}  className="cursor-pointer"/> : <div className="w-5" />}
                     </div>
                 </div>
             </div>
