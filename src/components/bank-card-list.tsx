@@ -7,7 +7,7 @@ import { useCardStore } from "@/stores/card-store";
 import EditCardModal from "./edit-card-modal";
 
 export default function BankCardList() {
-    const cards = useCardStore((state) => state.cards);
+    const { cards } = useCardStore();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [cardToEdit, setCardToEdit] = useState<BankCardType | undefined>(undefined);
 
@@ -18,7 +18,7 @@ export default function BankCardList() {
 
     return (
         <>
-            <section className="my-12 grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-5 min-h-50">
+            <section className="my-12 flex items-center flex-col lg:grid lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-5 min-h-50">
                 {cards.length > 0 ? (
                     cards.map((card) => (
                         <BankCard

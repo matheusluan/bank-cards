@@ -59,9 +59,9 @@ export default function EditCardModal({ isOpen, onClose, cardToEdit }: EditCardM
     return (
         <Modal title="Edit your card" isOpen={isOpen} onClose={onClose}>
             <form onSubmit={handleSubmit(onSubmit)} >
-                <div className="max-h-[50dvh] overflow-y-scroll pr-2">
+                <div className="max-h-[50dvh] overflow-y-scroll pr-1.5">
 
-                    <BankCard card={cardToEdit} className="mb-10" />
+                    <BankCard card={cardToEdit} className="mb-10 mx-auto" />
 
                     <div className="flex flex-col gap-5">
 

@@ -19,7 +19,8 @@ export default function BankCard({ card, className, onEdit, ...props }: BankCard
         <>
             <div
                 {...props}
-                className={`relative w-full min-w-70 h-44 rounded-sm text-white overflow-hidden  ${brand === CardBrand.VISA ? "bg-card-ciano" : "bg-primary-alt"} ${className}`}
+                onClick={() => onEdit?.(card)}
+                className={`relative w-full min-w-72 max-w-90 cursor-pointer h-44 rounded-sm text-white overflow-hidden  ${brand === CardBrand.VISA ? "bg-card-ciano" : "bg-primary-alt"} ${className}`}
             >
                 {/* Shape*/}
                 <div
@@ -40,7 +41,7 @@ export default function BankCard({ card, className, onEdit, ...props }: BankCard
                 </div>
 
                 {/* Card Content */}
-                <div className="relative z-10 min-w-80 h-44 py-4 px-5 flex flex-col justify-between">
+                <div className="relative z-10 min-w-72 max-w-90 h-44 py-4 px-4 flex flex-col justify-between">
                     {/* Top Part */}
                     <div className="flex justify-end items-center space-x-2 font-bold">
                         {/* CVV */}
@@ -63,7 +64,7 @@ export default function BankCard({ card, className, onEdit, ...props }: BankCard
                             <p className="text-sm tracking-widest">{formattedNumber}</p>
                         </div>
 
-                        {onEdit ? <Image src="/icons/edit-icon.svg" width={18} height={18} alt="Edit Icon" onClick={() => onEdit?.(card)}  className="cursor-pointer"/> : <div className="w-5" />}
+                        {onEdit ? <Image src="/icons/edit-icon.svg" width={18} height={18} alt="Edit Icon" /> : <div className="w-5" />}
                     </div>
                 </div>
             </div>

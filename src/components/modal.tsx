@@ -38,7 +38,7 @@ export default function Modal({ title, isOpen, onClose, children }: ModalProps) 
 
                     {/* Modal */}
                     <motion.div
-                        className="relative bg-white w-full rounded-t-md mt-auto pb-2 pt-8 px-6 lg:w-120 lg:rounded-2xl lg:mt-0 z-10 shadow-xl"
+                        className="relative bg-white w-full rounded-t-md mt-auto pb-2 pt-8 px-6 lg:w-110 lg:rounded-2xl lg:mt-0 z-10 shadow-xl"
                         initial={{ opacity: 0, y: 40, scale: 0.96 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{

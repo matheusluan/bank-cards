@@ -60,7 +60,7 @@ export default function AddCardModal() {
                         />
 
                         <Input
-                            label="Card Number"
+                            label="Card number"
                             name="cardNumber"
                             register={register}
                             touched={!!touchedFields.cardNumber}
@@ -75,7 +75,7 @@ export default function AddCardModal() {
                         />
 
                         <Input
-                            label="Expiry Date"
+                            label="Expiry date"
                             name="expiryDate"
                             register={register}
                             touched={!!touchedFields.expiryDate}
@@ -95,7 +95,7 @@ export default function AddCardModal() {
                         />
 
                         <Input
-                            label="CVC"
+                            label="CVC (Security code)"
                             name="cvc"
                             register={register}
                             error={errors.cvc}
