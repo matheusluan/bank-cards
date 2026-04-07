@@ -7,7 +7,7 @@ import { useCardStore } from "@/stores/card-store";
 import EditCardModal from "./edit-card-modal";
 
 export default function BankCardList() {
-    const { cards } = useCardStore();
+    const { cards, hasHydrated } = useCardStore();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [cardToEdit, setCardToEdit] = useState<BankCardType | undefined>(undefined);
 
@@ -15,6 +15,8 @@ export default function BankCardList() {
         setCardToEdit(card);
         setIsModalOpen(true);
     };
+
+    if (!hasHydrated) return null;
 
     return (
         <>

@@ -9,3 +9,7 @@ export function getCardBrand(cardNumber: string): CardBrand {
 
     return CardBrand.VISA;
 }
+
+export function formatCardNumber(number: string) {
+    return number.replace(/(.{4})/g, "$1 ").trim();
+}

@@ -1,5 +1,5 @@
-import BankCardList from "@/components/bank-card-list";
-import AddCardModal from "@/components/add-card-modal";
+
+import ClientCards from "@/components/client-cards";
 
 export default function Home() {
   return (
@@ -11,10 +11,8 @@ export default function Home() {
         Add, edit or delete your cards any time
       </h2>
 
-      {/* Card list */}
-      <BankCardList />
-
-      <AddCardModal />
+      {/* Wrapper to avoid hydration*/}
+      <ClientCards />
 
     </main>
   );

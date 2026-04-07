@@ -5,6 +5,8 @@ import { getCardBrand } from "@/utils/functions";
 
 interface CardStore {
     cards: BankCardType[];
+    hasHydrated: boolean;
+    setHasHydrated: (state: boolean) => void;
     addCard: (card: Omit<BankCardType, "brand">) => void;
     editCard: (card: Omit<BankCardType, "brand">) => void;
     removeCard: (id: string) => void;
@@ -14,6 +16,10 @@ export const useCardStore = create<CardStore>()(
     persist(
         (set) => ({
             cards: [],
+            hasHydrated: false,
+
+            setHasHydrated: (state) => set({ hasHydrated: state }),
+
             addCard: (card) =>
                 set((state) => ({
                     cards: [
@@ -24,6 +30,7 @@ export const useCardStore = create<CardStore>()(
                         },
                     ],
                 })),
+
             editCard: (card) =>
                 set((state) => ({
                     cards: state.cards.map((c) =>
@@ -32,6 +39,7 @@ export const useCardStore = create<CardStore>()(
                             : c
                     ),
                 })),
+
             removeCard: (id) =>
                 set((state) => ({
                     cards: state.cards.filter((c) => c.id !== id),
@@ -39,6 +47,9 @@ export const useCardStore = create<CardStore>()(
         }),
         {
             name: "bank-cards-storage",
+            onRehydrateStorage: () => (state) => {
+                state?.setHasHydrated(true);
+            },
         }
     )
 );

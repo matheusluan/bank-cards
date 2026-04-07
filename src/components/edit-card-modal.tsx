@@ -10,6 +10,7 @@ import Button from "./button";
 import { useCardStore } from "@/stores/card-store";
 import { BankCardType } from "@/types/card-bank";
 import BankCard from "./bank-card";
+import { formatCardNumber } from "@/utils/functions";
 
 type EditCardModalProps = {
     isOpen: boolean;
@@ -33,21 +34,23 @@ export default function EditCardModal({ isOpen, onClose, cardToEdit }: EditCardM
 
 
     useEffect(() => {
+        if (!cardToEdit) return;
+        
         reset({
             cvc: cardToEdit?.cvc,
             name: cardToEdit?.name,
-            cardNumber: cardToEdit?.number,
             expiryDate: cardToEdit?.expires,
+            cardNumber: formatCardNumber(cardToEdit!.number),
         });
     }, [cardToEdit, reset]);
 
     const onSubmit = (data: CardFormData) => {
         editCard({
-            id: cardToEdit!.id,
-            name: data.name,
-            number: data.cardNumber.replace(/\s/g, ""),
-            expires: data.expiryDate,
             cvc: data.cvc,
+            name: data.name,
+            id: cardToEdit!.id,
+            expires: data.expiryDate,
+            number: data.cardNumber.replace(/\s/g, ""),
         });
 
         onClose();

@@ -42,7 +42,7 @@ export default function AddCardModal() {
             <Button
                 type="button"
                 onClick={() => setIsOpen(true)}
-                className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[80%] lg:max-w-120 z-20"
+                className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[80%] md:max-w-120 z-20"
             >
                 Add new card
             </Button>

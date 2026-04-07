@@ -5,6 +5,7 @@ import { HTMLAttributes } from "react";
 import { BankCardType } from "@/types/card-bank";
 import { CardBrand } from "@/types/card-brand";
 import Image from "next/image";
+import { formatCardNumber } from "@/utils/functions";
 
 type BankCardProps = {
     card: BankCardType;
@@ -13,7 +14,6 @@ type BankCardProps = {
 
 export default function BankCard({ card, className, onEdit, ...props }: BankCardProps) {
     const { brand, name, number, cvc, expires } = card;
-    const formattedNumber = number.replace(/(.{4})/g, "$1 ").trim();
 
     return (
         <>
@@ -41,7 +41,7 @@ export default function BankCard({ card, className, onEdit, ...props }: BankCard
                 </div>
 
                 {/* Card Content */}
-                <div className="relative z-10 min-w-72 max-w-90 h-44 py-4 px-4 flex flex-col justify-between">
+                <div className="relative z-10 w-full min-w-72 max-w-90 h-44 py-4 px-4 flex flex-col justify-between">
                     {/* Top Part */}
                     <div className="flex justify-end items-center space-x-2 font-bold">
                         {/* CVV */}
@@ -61,7 +61,7 @@ export default function BankCard({ card, className, onEdit, ...props }: BankCard
                     <div className="flex justify-between items-end">
                         <div className="">
                             <p className="font-semibold">{name}</p>
-                            <p className="text-sm tracking-widest">{formattedNumber}</p>
+                            <p className="text-sm tracking-widest">{formatCardNumber(number)}</p>
                         </div>
 
                         {onEdit ? <Image src="/icons/edit-icon.svg" width={18} height={18} alt="Edit Icon" /> : <div className="w-5" />}
